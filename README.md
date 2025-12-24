@@ -10,7 +10,9 @@ Project/
 │
 ├── 📓 notebooks/                          # Jupyter notebooks
 │   ├── eda_amazon_qa.ipynb               # Exploratory Data Analysis
-│   └── sentiment_cf_analysis.ipynb       # Sentiment Analysis & Collaborative Filtering
+│   ├── sentiment_cf_analysis.ipynb       # Sentiment Analysis & Collaborative Filtering
+│   ├── hybrid_recommender.ipynb          # Hybrid Recommender System
+│   └── svd_matrix_factorization.ipynb    # Matrix Factorization with SVD
 │
 ├── 📊 visualizations/                     # All visualizations organized by analysis type
 │   ├── eda/                              # EDA visualizations
@@ -33,6 +35,15 @@ Project/
 │       ├── cf_evaluation.png
 │       ├── prediction_scatter.png
 │       └── error_distribution.png
+│   │
+│   ├── hybrid/                           # Hybrid recommender visualizations
+│   │   ├── model_comparison.png
+│   │   ├── feature_importance.png
+│   │   └── prediction_comparison.png
+│   │
+│   └── svd/                              # Matrix factorization visualizations
+│       ├── svd_cf_comparison.png
+│       └── prediction_scatter_plots.png
 │
 ├── 💾 data/                               # Data directory
 │   ├── raw/                              # Raw data files
@@ -47,7 +58,9 @@ Project/
 │   └── data_utils.py                     # Data processing utilities
 │
 ├── 📈 results/                            # Analysis results and reports
-│   └── cf_evaluation_results.csv         # CF model evaluation metrics
+│   ├── cf_evaluation_results.csv         # CF model evaluation metrics
+│   ├── hybrid_model_comparison.csv       # Hybrid model comparison results
+│   └── svd_cf_comparison.csv             # SVD vs CF comparison results
 │
 └── 📄 README.md                           # This file
 
@@ -107,6 +120,63 @@ Project/
 
 ---
 
+### 3. `hybrid_recommender.ipynb` - Hybrid Recommender System
+**Sections:**
+- Combining Collaborative Filtering with Content Features
+- CF-based features extraction (user/item similarities, predictions)
+- Content features integration (sentiment, readability, lexical)
+- Machine Learning models (Linear Regression, Random Forest)
+- Comparison: Pure CF vs Hybrid Models
+- Feature importance analysis
+- Model evaluation and visualization
+
+**Output:**
+- `data/results/hybrid_model_comparison.csv`
+- Visualizations in `visualizations/hybrid/`
+
+---
+
+### 4. `svd_matrix_factorization.ipynb` - Matrix Factorization with SVD
+**Sections:**
+- Custom SVD implementation using Stochastic Gradient Descent
+- TruncatedSVD and NMF implementations
+- Comparison with Traditional Collaborative Filtering
+- Latent factor extraction for hybrid models
+- Performance evaluation and visualization
+
+**Output:**
+- `data/results/svd_cf_comparison.csv`
+- `data/results/svd_train_features.pkl` and `svd_test_features.pkl`
+- `data/results/svd_latent_factors.pkl`
+- Visualizations in `visualizations/svd/`
+
+---
+
+## 👥 Team & Work Division
+
+### Sachin
+- **Exploratory Data Analysis (EDA)**: Complete data exploration, analysis, and visualization in `eda_amazon_qa.ipynb`
+- **Hybrid Recommender System**: Partial contribution to `hybrid_recommender.ipynb` implementation
+
+### Muhammad Asad
+- **Collaborative Filtering (CF)**: Implementation of Item-Item and User-User collaborative filtering algorithms in `sentiment_cf_analysis.ipynb`
+- CF model evaluation and performance analysis
+
+### Amir Raj
+- **Matrix Factorization (SVD)**: Complete implementation of SVD using Stochastic Gradient Descent in `svd_matrix_factorization.ipynb`
+- Comparison of SVD with traditional CF methods
+- Latent factor extraction and feature engineering
+
+---
+
+## 🔮 Future Work
+
+- **Deep Learning Approaches**: Explore neural collaborative filtering and deep learning-based recommendation models to capture complex non-linear patterns in user-item interactions.
+- **Real-time Recommendation System**: Develop a production-ready recommendation API that can handle real-time queries and update recommendations dynamically based on user behavior patterns.
+- **Multi-objective Optimization**: Investigate recommendation strategies that balance multiple objectives such as relevance, diversity, novelty, and serendipity for enhanced user satisfaction.
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -123,6 +193,8 @@ python scripts/download_amazon_qa_data.py
 ### Run Notebooks
 1. Open `notebooks/eda_amazon_qa.ipynb` - Run all cells for EDA
 2. Open `notebooks/sentiment_cf_analysis.ipynb` - Run all cells for sentiment & CF analysis
+3. Open `notebooks/hybrid_recommender.ipynb` - Run all cells for hybrid recommender system
+4. Open `notebooks/svd_matrix_factorization.ipynb` - Run all cells for SVD matrix factorization
 
 ---
 
@@ -200,20 +272,13 @@ Utility functions for:
 - Processed data files are stored in `data/processed/` for reuse
 - The notebooks use the provided `parse()` and `getDF()` functions as specified in the dataset documentation
 - Sentiment scores are scaled to 1-5 rating scale for collaborative filtering
-
----
-
-## 👥 Author
-
-MSDS Student - Semester 3  
-Recommender System Project
+- This is a data analysis project for MSDS Semester 3 - Recommender System course
 
 ---
 
 ## 📄 License
 
 This project uses the Amazon Q&A dataset from Julian McAuley (UCSD). Please refer to the original dataset's license and citation requirements.
-
 
 
 
